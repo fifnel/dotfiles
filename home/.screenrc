@@ -1,0 +1,6 @@
+# hardstatus alwayslastline "%-Lw%{= BW}%50>%n%f* %t%{-}%+Lw%< %100=%-8=%c:%s"
+hardstatus alwayslastline "[%Y/%m/%d %02c:%s] %`%-w%{=b bw}%n %t%{-}%+w"
+vbell off
+
+bind 0 screen -t "tabname" ssh fifnel@fifnel.com
+

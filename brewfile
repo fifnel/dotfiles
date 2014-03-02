@@ -1,0 +1,19 @@
+tap phinze/homebrew-cask || true
+tap homebrew/versions|| true
+tap homebrew/dupes
+
+update || true
+install brew-cask || true
+install autoconf || true
+install automake || true
+install boost || true
+install git || true
+install hg || true
+install hub || true
+install llvm || true
+install mysql || true
+install imagemagick || true
+install rbenv || true
+install ruby-build || true
+install reattach-to-user-namespace || true
+install homebrew/dupes/grep

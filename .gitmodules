@@ -4,3 +4,6 @@
 [submodule "home/.vim/bundle/neobundle.vim"]
 	path = home/.vim/bundle/neobundle.vim
 	url = https://github.com/Shougo/neobundle.vim.git
+[submodule "home/.zsh.d/zsh-notify"]
+	path = home/.zsh.d/zsh-notify
+	url = https://github.com/marzocchi/zsh-notify.git

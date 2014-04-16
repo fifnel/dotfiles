@@ -50,7 +50,8 @@ NeoBundle 'project.tar.gz'
 NeoBundle 'rbgrouleff/bclose.vim'
 
 NeoBundle 'surround.vim'
-NeoBundle 'nishigori/vim-sunday'
+"NeoBundle 'nishigori/vim-sunday'
+NeoBundle 'nishigori/increment-activator'
 NeoBundle 'sakuraiyuta/commentout.vim'
 NeoBundle 'tpope/vim-endwise'
 NeoBundle 'fugitive.vim' " git
@@ -733,6 +734,12 @@ autocmd FileType objc let g:clang_auto_user_options = 'path, .clang_complete, io
 " screwing up folding when switching between windows.
 autocmd InsertEnter * if !exists('w:last_fdm') | let w:last_fdm=&foldmethod | setlocal foldmethod=manual | endif
 autocmd InsertLeave,WinLeave * if exists('w:last_fdm') | let &l:foldmethod=w:last_fdm | unlet w:last_fdm | endif
+
+
+" colorscheme for console
+if !has('gui_running')
+    colorscheme desert
+endif
 
 " vim: set ts=4 sw=4 sts=0 tw=0
 

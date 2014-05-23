@@ -717,7 +717,7 @@ autocmd QuickfixCmdPost vimgrep cw
 autocmd FileType * set formatoptions-=ro
 
 " ファイルを開いた場所をカレントディレクトリにする
-autocmd BufEnter *   execute ":lcd " . expand("%:p:h")
+autocmd BufEnter *   execute ':lcd ' . expand('"%:p:h"')
 
 " quickfixコマンド後にcopenする指定
 au QuickfixCmdPost make,grep,grepadd,vimgrep copen

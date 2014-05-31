@@ -16,21 +16,11 @@ colorscheme vimpwhite
 " browser settings
 "------------------------------------------------------------------------------
 
-" 互換性チェック外し
-set! extensions.checkCompatibility.13.0=false
-set! extensions.checkCompatibility.14.0=false
-set! extensions.checkCompatibility.15.0=false
-
 " ページのアクセスキーを無効化
 set! ui.key.generalAccessKey=0
 
 " undo保持数
 set! browser.sessionstore.max_tabs_undo=100
-
-" ステータスバーの閉じるボタンを消す
-style -name addonbar-closebutton chrome://* <<EOM
-#addonbar-closebutton { visibility:hidden; }
-EOM
 
 "------------------------------------------------------------------------------
 " basical mappings
@@ -63,6 +53,8 @@ noremap h gT
 nnoremap c :copy URL<CR>
 nnoremap C :copy titleAndURL<CR>
 nnoremap <C-S-c> :copy htmlanchor<CR>
+js liberator.echo = function (str, flags) commandline.echo(str, commandline.HL_INFOMSG, flags);
+set messagetimeout=1000 
 
 " browser_object.js
 map <C-S-h> ,dlt<CR> " 今のタブから左（上）を全閉じ
@@ -79,12 +71,16 @@ liberator.globalVariables.hBookmark_shortcuts = {
 EOM
 javascript if (typeof hBookmark != 'undefined') liberator.loadScript('chrome://hatenabookmark/content/vimperator/plugin/hatenabookmark.js', {__proto__: this});
 
+" direct_bookmark
+nnoremap s :sbm [sbm]<CR>
+nnoremap S :sbm [sbm] 
+
 "------------------------------------------------------------------------------
 " plugins settings
 "------------------------------------------------------------------------------
 " plugin_loader.js
 let g:plugin_loader_roots = "~/.vimperator/vimperator-plugins.git/"
-let g:plugin_loader_plugins = "_libly,browser_object,copy,feedSomeKeys_3,ime_controller,walk-input,statusline-toolbar"
+let g:plugin_loader_plugins = "_libly,browser_object,copy,feedSomeKeys_3,ime_controller,walk-input,direct_bookmark"
 
 " browser_object.js
 let g:browser_object_prefix = ','
@@ -118,6 +114,10 @@ lazy fmaps -u='www\.google\.co\.jp/reader' -events=vkeypress m,mn A v,vn r o X O
 lazy fmaps -u='http://.*\.tumblr\.com/' i,tj x,d j k p o n,lj
 lazy fmaps -u='http://code.google.com/p/vimperator-labs/issues/list' o j k
 lazy fmaps -u='http://code.google.com/p/vimperator-labs/issues/detail' u
+
+" direct_bookmark.js
+let g:direct_sbm_use_services_by_tag  = "P"
+let g:direct_sbm_use_services_by_post = "P"
 
 
 echo ".vimperatorrc sourced"

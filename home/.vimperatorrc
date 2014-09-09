@@ -72,8 +72,8 @@ EOM
 javascript if (typeof hBookmark != 'undefined') liberator.loadScript('chrome://hatenabookmark/content/vimperator/plugin/hatenabookmark.js', {__proto__: this});
 
 " direct_bookmark
-nnoremap s :sbm [sbm]<CR>
-nnoremap S :sbm [sbm] 
+"nnoremap s :sbm [sbm]<CR>
+"nnoremap S :sbm [sbm] 
 
 "------------------------------------------------------------------------------
 " plugins settings

@@ -40,7 +40,7 @@ alias knife='nocorrect knife'
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=/usr/local/heroku/bin:/Users/fifnel/.pythonz/bin:/Users/fifnel/.nvm/v0.6.14/bin:/Users/fifnel/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin
+export PATH=/usr/local/heroku/bin:~/.pythonz/bin:~/.nvm/v0.6.14/bin:~/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin
 
 source ~/.zsh.d/zsh-notify/notify.plugin.zsh
 # export SYS_NOTIFIER="/Users/kei/.rbenv/shims/terminal-notifier"

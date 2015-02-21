@@ -33,7 +33,7 @@ ZSH_THEME="candy"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 #plugins=(git git-flow vagrant knife rbenv gem bundler brew osx rsync)
-plugins=(git git-flow vagrant knife gem bundler brew osx rsync rails)
+plugins=(git git-flow vagrant knife gem bundler brew osx rsync rails tmuxinator)
 
 alias knife='nocorrect knife'
 alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'

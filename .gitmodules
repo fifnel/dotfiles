@@ -7,3 +7,6 @@
 [submodule "home/.zsh.d/zsh-notify"]
 	path = home/.zsh.d/zsh-notify
 	url = https://github.com/marzocchi/zsh-notify.git
+[submodule "home/.tmux/tmux-powerline"]
+	path = home/.tmux/tmux-powerline
+	url = https://github.com/erikw/tmux-powerline.git

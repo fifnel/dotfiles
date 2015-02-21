@@ -36,6 +36,8 @@ ZSH_THEME="candy"
 plugins=(git git-flow vagrant knife gem bundler brew osx rsync rails)
 
 alias knife='nocorrect knife'
+alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 
 source $ZSH/oh-my-zsh.sh
 

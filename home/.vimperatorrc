@@ -6,13 +6,14 @@ colorscheme vimpwhite
 set complete=tl
 set focuscontent
 set hintchars=hjklasdfgyuiopqwertnmzxcvb
+set messagetimeout=2000
 
 "------------------------------------------------------------------------------
 " plugin settings
 "------------------------------------------------------------------------------
 " plugin_loader.js
 let g:plugin_loader_roots = "~/.vimperator/vimperator-plugins.git/"
-let g:plugin_loader_plugins = "_libly,browser_object,copy,feedSomeKeys_3,ime_controller,walk-input"
+let g:plugin_loader_plugins = "_libly,browser_object,feedSomeKeys_3,ime_controller,walk-input"
 
 " browser_object.js
 let g:browser_object_prefix = ','
@@ -21,7 +22,7 @@ let g:browser_object_prefix = ','
 let g:ex_ime_mode = "inactive"
 let g:textarea_ime_mode = "inactive"
 
-" copy.js
+" copy.js (一部改変しているのでpluginフォルダより読み込み)
 javascript <<EOM
 liberator.globalVariables.copy_templates = [
    { label: 'titleAndURL',    value: '%TITLE%\n%URL%' },
@@ -34,9 +35,6 @@ liberator.globalVariables.copy_templates = [
    { label: 'htmlanchor',     value: '<a href="%URL%">%TITLE%</a>' }
 ];
 EOM
-js liberator.echo = function (str, flags) commandline.echo(str, commandline.HL_INFOMSG, flags);
-set messagetimeout=1000 
-
 
 " feedSomeKeys_3.js
 command! -nargs=+ lazy autocmd VimperatorEnter .* <args>
@@ -65,10 +63,10 @@ noremap l gt
 noremap h gT
 
 " URLコピー(copy.js)
-nnoremap <silent> c :copy URL<CR><ESC>:echo 'copy URL'<CR>
+nnoremap c :copy URL<CR>
 
 " URLとタイトルコピー(copy.js)
-nnoremap <silent> C :copy titleAndURL<CR><ESC>:echo 'copy title and URL'<CR>
+nnoremap C :copy titleAndURL<CR>
 
 " 上/下のタブをすべて閉じる(browser_object.js)
 nmap <C-S-h> ,dlt<CR>

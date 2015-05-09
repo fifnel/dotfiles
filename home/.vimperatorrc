@@ -1,86 +1,18 @@
-"3.5 (created: 2011/11/13 17:32:12)
-"by fifnel
-
 "------------------------------------------------------------------------------
 " vimperator settings
 "------------------------------------------------------------------------------
-set complete=tl
-set focuscontent
-set hintchars=HJKLASDFGYUIOPQWERTNMZXCVB
-set visualbell
-highlight Bell display:none;
-
 colorscheme vimpwhite
 
-"------------------------------------------------------------------------------
-" browser settings
-"------------------------------------------------------------------------------
-
-" ページのアクセスキーを無効化
-set! ui.key.generalAccessKey=0
-
-" undo保持数
-set! browser.sessionstore.max_tabs_undo=100
+set complete=tl
+set focuscontent
+set hintchars=hjklasdfgyuiopqwertnmzxcvb
 
 "------------------------------------------------------------------------------
-" basical mappings
-"------------------------------------------------------------------------------
-" コロンとセミコロンを入れ替え
-nnoremap ; :
-nnoremap : ;
-
-" 進む、戻る
-nnoremap , H
-nnoremap . L
-
-" 中止
-nnoremap <Esc> :stop<CR>
-
-" j/kの移動量をもう少し多めに
-noremap j 10j
-noremap k 10k
-
-" タブ移動
-noremap <F3> gt
-noremap <F2> gT
-noremap l gt
-noremap h gT
-
-"------------------------------------------------------------------------------
-" plugins mappings
-"------------------------------------------------------------------------------
-" copy.js
-nnoremap c :copy URL<CR>
-nnoremap C :copy titleAndURL<CR>
-nnoremap <C-S-c> :copy htmlanchor<CR>
-js liberator.echo = function (str, flags) commandline.echo(str, commandline.HL_INFOMSG, flags);
-set messagetimeout=1000 
-
-" browser_object.js
-map <C-S-h> ,dlt<CR> " 今のタブから左（上）を全閉じ
-map <C-S-l> ,drt<CR> " 今のタブから右（下）を全閉じ
-
-" はてなブックマークアドオン
-javascript <<EOM
-liberator.globalVariables.hBookmark_shortcuts = {
-    hintsAdd     : 'e',
-    hintsComment : 'E',
-    add          : ['e'],
-    comment      : ['E'],
-};
-EOM
-javascript if (typeof hBookmark != 'undefined') liberator.loadScript('chrome://hatenabookmark/content/vimperator/plugin/hatenabookmark.js', {__proto__: this});
-
-" direct_bookmark
-"nnoremap s :sbm [sbm]<CR>
-"nnoremap S :sbm [sbm] 
-
-"------------------------------------------------------------------------------
-" plugins settings
+" plugin settings
 "------------------------------------------------------------------------------
 " plugin_loader.js
 let g:plugin_loader_roots = "~/.vimperator/vimperator-plugins.git/"
-let g:plugin_loader_plugins = "_libly,browser_object,copy,feedSomeKeys_3,ime_controller,walk-input,direct_bookmark"
+let g:plugin_loader_plugins = "_libly,browser_object,copy,feedSomeKeys_3,ime_controller,walk-input"
 
 " browser_object.js
 let g:browser_object_prefix = ','
@@ -88,9 +20,6 @@ let g:browser_object_prefix = ','
 " ime_controller.js
 let g:ex_ime_mode = "inactive"
 let g:textarea_ime_mode = "inactive"
-
-" statusline-toolbar.js
-"set statuslinetoolbars=feed-button
 
 " copy.js
 javascript <<EOM
@@ -105,21 +34,63 @@ liberator.globalVariables.copy_templates = [
    { label: 'htmlanchor',     value: '<a href="%URL%">%TITLE%</a>' }
 ];
 EOM
+js liberator.echo = function (str, flags) commandline.echo(str, commandline.HL_INFOMSG, flags);
+set messagetimeout=1000 
+
 
 " feedSomeKeys_3.js
 command! -nargs=+ lazy autocmd VimperatorEnter .* <args>
 lazy fmaps -u='mail\.google\.com/mail' c / j k n p o u e x s r a # [ ] ? gi gs gt gd ga gc
 lazy fmaps -u='mail\.google\.com/mail/.*/[0-9a-f]+$' c / j,n k,p n,j p,k o u e x s r a # [ ] ? gi gs gt gd ga gc
-lazy fmaps -u='www\.google\.co\.jp/reader' -events=vkeypress m,mn A v,vn r o X O gh ga gs gt gu / ? <Space> <S-Space> <PageUp> <PageDown> c,1 C,2 j,n k,p n,j p,k s,NO S,ANO a,PO J,N K,P w,t b,s z,zb T M,mn
-lazy fmaps -u='http://.*\.tumblr\.com/' i,tj x,d j k p o n,lj
-lazy fmaps -u='http://code.google.com/p/vimperator-labs/issues/list' o j k
-lazy fmaps -u='http://code.google.com/p/vimperator-labs/issues/detail' u
 
-" direct_bookmark.js
-let g:direct_sbm_use_services_by_tag  = "P"
-let g:direct_sbm_use_services_by_post = "P"
+"------------------------------------------------------------------------------
+" keymap
+"------------------------------------------------------------------------------
+" 再起動
+nnoremap <C-r> :restart<CR>
 
+" .vimperatorrcリロード
+nnoremap R :source ~/.vimperatorrc<CR>
 
-echo ".vimperatorrc sourced"
+" コロンとセミコロンを入れ替え
+nnoremap ; :
+nnoremap : ;
+
+" jk移動量を増やす
+nnoremap j 10j
+nnoremap k 10k
+
+" タブ移動
+noremap l gt
+noremap h gT
+
+" URLコピー(copy.js)
+nnoremap <silent> c :copy URL<CR><ESC>:echo 'copy URL'<CR>
+
+" URLとタイトルコピー(copy.js)
+nnoremap <silent> C :copy titleAndURL<CR><ESC>:echo 'copy title and URL'<CR>
+
+" 上/下のタブをすべて閉じる(browser_object.js)
+nmap <C-S-h> ,dlt<CR>
+nmap <C-S-l> ,drt<CR>
+
+"------------------------------------------------------------------------------
+" etc
+"------------------------------------------------------------------------------
+" はてなブックマークアドオン
+javascript <<EOM
+liberator.globalVariables.hBookmark_shortcuts = {
+    hintsAdd     : 'e',
+    hintsComment : 'E',
+    add          : ['e'],
+    comment      : ['E'],
+};
+EOM
+javascript if (typeof hBookmark != 'undefined') liberator.loadScript('chrome://hatenabookmark/content/vimperator/plugin/hatenabookmark.js', {__proto__: this});
+
+"------------------------------------------------------------------------------
+" footer
+"------------------------------------------------------------------------------
+echo ".vimperatorrc source"
 
 " vim: set ft=vimperator:

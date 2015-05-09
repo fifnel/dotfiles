@@ -89,6 +89,5 @@ javascript if (typeof hBookmark != 'undefined') liberator.loadScript('chrome://h
 "------------------------------------------------------------------------------
 " footer
 "------------------------------------------------------------------------------
-echo ".vimperatorrc source"
-
+js commandline.echo('.vimperatorrc sourced.', commandline.HL_INFOMSG, commandline.FORCE_SINGLELINE);
 " vim: set ft=vimperator:

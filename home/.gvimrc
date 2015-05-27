@@ -5,7 +5,7 @@ set guioptions-=T          " ツールバー削除
 if has("mac")
   set transparency=10        " 半透明
   "set guifont=Osaka-Mono:h14 " フォント
-  set guifont=Ricty:h16       " フォント
+  set guifont=Ricty\ Discord:h16       " フォント
 endif
 
 " OSのクリップボードを使えるようにする

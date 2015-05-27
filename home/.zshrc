@@ -42,8 +42,17 @@ alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=/usr/local/heroku/bin:~/.pythonz/bin:~/.nvm/v0.6.14/bin:~/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin
-
+export PATH=/usr/local/heroku/bin:~/.pythonz/bin:~/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin
+export NODE_PATH=$NODE_PATH:/usr/local/lib/node_modules
+source ~/.nvm/nvm.sh
 source ~/.zsh.d/zsh-notify/notify.plugin.zsh
+
 # export SYS_NOTIFIER="/Users/kei/.rbenv/shims/terminal-notifier"
 export NOTIFY_COMMAND_COMPLETE_TIMEOUT=10
+
+#if ! [ "`boot2docker status`" = "running" ]; then
+#    boot2docker up
+#fi
+#if [ "`boot2docker status`" = "running" ]; then
+#    $(boot2docker shellinit)
+#fi

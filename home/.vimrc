@@ -10,29 +10,9 @@ set re=1
 
 filetype off
 
-if has('vim_starting')
-    if has('win32') || has('win64')
-        set rtp+=~/.vim/bundle/neobundle.vim/
-        call neobundle#begin(expand('~/.vim/bundle/'))
-        NeoBundleFetch 'Shougo/neobundle.vim'
-        call neobundle#end()
-    elseif has('mac')
-        set rtp+=~/.vim/bundle/neobundle.vim/
-        call neobundle#begin(expand('~/.vim/bundle/'))
-        NeoBundleFetch 'Shougo/neobundle.vim'
-        call neobundle#end()
-    elseif has('unix') && match(system('uname'),'Darwin')!=-1
-        set rtp+=~/.vim/bundle/neobundle.vim/
-        call neobundle#begin(expand('~/.vim/bundle/'))
-        NeoBundleFetch 'Shougo/neobundle.vim'
-        call neobundle#end()
-    else
-        set rtp+=/mnt/hgfs/share/Settings/vim/bundle/neobundle.vim/
-        call neobundle#begin(expand('/mnt/hgfs/share/Settings/vim/bundle/neobundle.vim/'))
-        NeoBundleFetch 'Shougo/neobundle.vim'
-        call neobundle#end()
-    endif
-endif
+set rtp+=~/.vim/bundle/neobundle.vim/
+call neobundle#begin(expand('~/.vim/bundle/'))
+NeoBundleFetch 'Shougo/neobundle.vim'
 
 " I love neo*
 NeoBundle 'Shougo/vimproc.vim', {
@@ -118,6 +98,8 @@ NeoBundle 'fifnel/ofaddinbox.vim'
 filetype plugin indent on
 
 NeoBundleCheck
+
+call neobundle#end()
 
 
 "///////////////////////////////////////////////////////////////////////////////

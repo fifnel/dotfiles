@@ -13,7 +13,7 @@ set messagetimeout=2000
 "------------------------------------------------------------------------------
 " plugin_loader.js
 let g:plugin_loader_roots = "~/.vimperator/vimperator-plugins.git/"
-let g:plugin_loader_plugins = "_libly,browser_object,feedSomeKeys_3,ime_controller,walk-input"
+let g:plugin_loader_plugins = "_libly,browser_object,feedSomeKeys_3,ime_controller,walk-input,ldrize_cooperation"
 
 " browser_object.js
 let g:browser_object_prefix = ','
@@ -78,13 +78,21 @@ nmap <C-S-l> ,drt<CR>
 " はてなブックマークアドオン
 javascript <<EOM
 liberator.globalVariables.hBookmark_shortcuts = {
-    hintsAdd     : 'e',
-    hintsComment : 'E',
-    add          : ['e'],
-    comment      : ['E'],
+    hintsAdd     : 'E',
+    hintsComment : 'e',
+    add          : ['E'],
+    comment      : ['e'],
 };
 EOM
 javascript if (typeof hBookmark != 'undefined') liberator.loadScript('chrome://hatenabookmark/content/vimperator/plugin/hatenabookmark.js', {__proto__: this});
+
+" Evernote Clearly
+javascript <<EOM
+window.onload = function() {
+  require("chrome://readable-by-evernote/content/global.js");
+}
+EOM
+nnoremap s :js __readable_by_evernote.context_menu__call();<CR>
 
 "------------------------------------------------------------------------------
 " footer

@@ -27,7 +27,7 @@ alias screen='~/local/bin/screen-4.1.0'
 alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
 
 # path
-export PATH=/usr/local/heroku/bin:~/.pythonz/bin:~/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin
+export PATH=/usr/local/heroku/bin:~/.pythonz/bin:$PATH
 export NODE_PATH=$NODE_PATH:/usr/local/lib/node_modules
 source ~/.nvm/nvm.sh
 

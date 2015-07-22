@@ -49,6 +49,7 @@ NeoBundle 'fugitive.vim' " git
 NeoBundle 'vim-scripts/TwitVim' " Twitter client for Vim
 NeoBundle 'fuenor/qfixhowm'
 NeoBundle "osyo-manga/unite-qfixhowm"
+NeoBundle "aklt/plantuml-syntax"
 
 " colorscheme
 NeoBundle 'jellybeans.vim'

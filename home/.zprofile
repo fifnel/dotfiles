@@ -1,16 +1,18 @@
+#----------------------------------------------
+# 初回ログイン時に実行される設定
+#----------------------------------------------
+# 初回のみ                :○
+# インタラクティブシェル時:×
+# シェルスクリプト時      :×
+#----------------------------------------------
+
 # 文字コード
 export LANG=ja_JP.UTF-8
-#export LESSCHARSET=utf-8
 
-# ruby
-eval "$(rbenv init -)"
-
-# node.js
-source ~/.nvm/nvm.sh
-npm_dir=${NVM_PATH}_modules
-export NODE_PATH=$npm_dir
-export SSL_CERT_FILE=/usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
-
-# homebrew
-#export HOMEBREW_CASK_OPTS="--appdir=/Applications"
-
+# for boot2docker
+#if ! [ "`boot2docker status`" = "running" ]; then
+#    boot2docker up
+#fi
+#if [ "`boot2docker status`" = "running" ]; then
+#    $(boot2docker shellinit)
+#fi

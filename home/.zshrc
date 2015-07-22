@@ -35,24 +35,39 @@ ZSH_THEME="candy"
 #plugins=(git git-flow vagrant knife rbenv gem bundler brew osx rsync)
 plugins=(git git-flow vagrant knife gem bundler brew osx rsync rails tmuxinator)
 
+source $ZSH/oh-my-zsh.sh
+
+
+# Customize to your needs...
+
+#----------------------------------------------
+# シェルとして起動された場合に実行される設定
+#----------------------------------------------
+# 初回のみ                :×
+# インタラクティブシェル時:○
+# シェルスクリプト時      :×
+#----------------------------------------------
+
+# color
+export CLICOLOR=1
+export LSCOLORS=DxGxcxdxCxegedabagacad
+
+
+# editor
+export GIT_EDITOR='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+export EDITOR=/usr/bin/vim
+
+# aliases
 alias knife='nocorrect knife'
 alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 
-source $ZSH/oh-my-zsh.sh
-
-# Customize to your needs...
-export PATH=/usr/local/heroku/bin:~/.pythonz/bin:~/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin
-export NODE_PATH=$NODE_PATH:/usr/local/lib/node_modules
-source ~/.nvm/nvm.sh
+# for oh-my-zsh plugin
+export NOTIFY_COMMAND_COMPLETE_TIMEOUT=10
 source ~/.zsh.d/zsh-notify/notify.plugin.zsh
 
-# export SYS_NOTIFIER="/Users/kei/.rbenv/shims/terminal-notifier"
-export NOTIFY_COMMAND_COMPLETE_TIMEOUT=10
+# pathes
+PATH=/usr/local/heroku/bin:$PATH
+PATH=~/.pythonz/bin:$PATH
+export PATH
 
-#if ! [ "`boot2docker status`" = "running" ]; then
-#    boot2docker up
-#fi
-#if [ "`boot2docker status`" = "running" ]; then
-#    $(boot2docker shellinit)
-#fi

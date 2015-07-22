@@ -1,8 +1,10 @@
-#
-# PATH,MANPATH
-#
-#export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-#export MANPATH=/opt/local/share/man:$MANPATH
+#----------------------------------------------
+# いかなる場合も実行される設定
+#----------------------------------------------
+# 初回のみ                :×
+# インタラクティブシェル時:○
+# シェルスクリプト時      :○
+#----------------------------------------------
 
 case ${UID} in
 0)
@@ -10,11 +12,14 @@ case ${UID} in
     ;;
 esac
 
-# color
-export CLICOLOR=1
-export LSCOLORS=DxGxcxdxCxegedabagacad
+# for rbenv
+eval "$(rbenv init -)"
 
-# editor
-export GIT_EDITOR='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
-export EDITOR=/usr/bin/vim
+# for nodejs
+export NODE_PATH=/usr/local/lib/node_modules
+export SSL_CERT_FILE=/usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
+source ~/.nvm/nvm.sh
+
+# for golang
+export GOPATH=$HOME/.go
 

@@ -33,7 +33,7 @@ ZSH_THEME="candy"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 #plugins=(git git-flow vagrant knife rbenv gem bundler brew osx rsync)
-plugins=(git git-flow vagrant knife gem bundler brew osx rsync rails tmuxinator docker)
+plugins=(git git-flow vagrant knife gem bundler brew osx rsync rails tmuxinator docker golang)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -62,12 +62,30 @@ alias knife='nocorrect knife'
 alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 
-# for oh-my-zsh plugin
+# oh-my-zsh plugin
 export NOTIFY_COMMAND_COMPLETE_TIMEOUT=10
 source ~/.zsh.d/zsh-notify/notify.plugin.zsh
 
-# pathes
-PATH=/usr/local/heroku/bin:$PATH
-PATH=~/.pythonz/bin:$PATH
+# pythonz
+if [ -s $HOME/.pythonz/etc/bashrc ]; then
+    source $HOME/.pythonz/etc/bashrc
+fi
+#PATH=~/.pythonz/bin:$PATH
+#export PATH
+
+# rbenv
+eval "$(rbenv init -)"
+
+# nodejs
+export NODE_PATH=/usr/local/lib/node_modules
+export SSL_CERT_FILE=/usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
+source ~/.nvm/nvm.sh
+
+# golang
+export GOPATH=$HOME/Develop/go
+PATH=$GOPATH/bin:$PATH
 export PATH
+
+# direnv
+eval "$(direnv hook zsh)"
 

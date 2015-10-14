@@ -9,10 +9,3 @@
 # 文字コード
 export LANG=ja_JP.UTF-8
 
-# for boot2docker
-#if ! [ "`boot2docker status`" = "running" ]; then
-#    boot2docker up
-#fi
-#if [ "`boot2docker status`" = "running" ]; then
-#    $(boot2docker shellinit)
-#fi

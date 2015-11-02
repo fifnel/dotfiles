@@ -55,7 +55,7 @@ export LSCOLORS=DxGxcxdxCxegedabagacad
 
 # editor
 export GIT_EDITOR='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
-export EDITOR=/usr/bin/vim
+export EDITOR='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim'
 
 # aliases
 alias knife='nocorrect knife'
@@ -63,8 +63,9 @@ alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 
 # oh-my-zsh plugin
-export NOTIFY_COMMAND_COMPLETE_TIMEOUT=10
-source ~/.zsh.d/zsh-notify/notify.plugin.zsh
+#export NOTIFY_COMMAND_COMPLETE_TIMEOUT=10
+#source ~/.zsh.d/zsh-notify/notify.plugin.zsh
+# tmuxと相性悪いのでしばらく使用をやめる
 
 # pythonz
 if [ -s $HOME/.pythonz/etc/bashrc ]; then

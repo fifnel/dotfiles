@@ -13,7 +13,8 @@ set messagetimeout=2000
 "------------------------------------------------------------------------------
 " plugin_loader.js
 let g:plugin_loader_roots = "~/.vimperator/vimperator-plugins.git/"
-let g:plugin_loader_plugins = "_libly,browser_object,feedSomeKeys_3,ime_controller,walk-input,ldrize_cooperation"
+"let g:plugin_loader_plugins = "_libly,browser_object,feedSomeKeys_3,ime_controller,walk-input,ldrize_cooperation"
+let g:plugin_loader_plugins = "_libly,browser_object,feedSomeKeys_3,ime_controller,walk-input"
 
 " browser_object.js
 let g:browser_object_prefix = ','

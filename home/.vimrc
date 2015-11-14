@@ -2,7 +2,7 @@ set nocompatible
 
 " 正規表現エンジンを旧型に
 " Rubyの正規表現で重たい
-set re=1
+"set re=1
 
 "///////////////////////////////////////////////////////////////////////////////
 " vundleの読み込み設定
@@ -33,21 +33,17 @@ NeoBundle 'Shougo/vimshell'
 " library
 NeoBundle 'L9'
 
-" utils
+" utility
 NeoBundle 'Align'
 NeoBundle 'cecutil'
 NeoBundle 'grep.vim'
 NeoBundle 'project.tar.gz'
-"NeoBundle 'QuickBuf'
 NeoBundle 'rbgrouleff/bclose.vim'
-
 NeoBundle 'surround.vim'
-"NeoBundle 'nishigori/vim-sunday'
 NeoBundle 'nishigori/increment-activator'
 NeoBundle 'sakuraiyuta/commentout.vim'
 NeoBundle 'tpope/vim-endwise'
-NeoBundle 'fugitive.vim' " git
-NeoBundle 'vim-scripts/TwitVim' " Twitter client for Vim
+NeoBundle 'fugitive.vim'
 NeoBundle 'fuenor/qfixhowm'
 NeoBundle "osyo-manga/unite-qfixhowm"
 NeoBundle "aklt/plantuml-syntax"
@@ -56,21 +52,21 @@ NeoBundle "aklt/plantuml-syntax"
 NeoBundle 'jellybeans.vim'
 NeoBundle 'vim-scripts/hybrid.vim'
 NeoBundle 'altercation/vim-colors-solarized'
-
 NeoBundle 'itchyny/lightline.vim'
 
 " coding
-NeoBundle 'cake.vim'
-NeoBundle 'tpope/vim-rails'
-NeoBundle 'ZenCoding.vim'
-NeoBundle 'quickrun.vim'
-NeoBundle 'html5.vim'
-NeoBundle 'jade.vim'
 
 " test
 NeoBundle 'fifnel/ofaddinbox.vim'
 
 " 未使用
+"NeoBundle 'tpope/vim-rails'
+"NeoBundle 'ZenCoding.vim'
+"NeoBundle 'quickrun.vim'
+"NeoBundle 'html5.vim'
+"NeoBundle 'jade.vim'
+"NeoBundle 'cake.vim'
+"NeoBundle 'nishigori/vim-sunday'
 "NeoBundle 'h1mesuke/unite-outline'
 "NeoBundle 'tomtom/tlib_vim'
 "NeoBundle 'MarcWeber/vim-addon-mw-utils'
@@ -89,13 +85,8 @@ NeoBundle 'fifnel/ofaddinbox.vim'
 "NeoBundle 'vim-scripts/cocoa.vim' " Plugin for Cocoa/Objective-C development
 "NeoBundle 'tokorom/clang_complete'
 "NeoBundle 'tokorom/clang_complete-getopts-ios'
-"NeoBundle 'vim-scripts/gtags.vim'
 "NeoBundle 'rcyrus/snipmate-snippets-rubymotion'
 "NeoBundle 'ervandew/supertab' " Perform all your vim insert mode completions with Tab
-"NeoBundle 'daisuzu/unite-gtags'
-"NeoBundle 'hewes/unite-gtags' " Unite source for GNU GLOBAL
-"source /usr/local/Cellar/global/6.2.7/share/gtags/gtags.vim
-"source /usr/local/Cellar/global/6.2.7/share/gtags/gtags-cscope.vim
 
 filetype plugin indent on
 
@@ -107,15 +98,12 @@ call neobundle#end()
 "///////////////////////////////////////////////////////////////////////////////
 " パスの追加
 "///////////////////////////////////////////////////////////////////////////////
-
 set path+=/usr/local/include/
-set tags+=./tags;
 
 
 "///////////////////////////////////////////////////////////////////////////////
 " カラーリングの設定
 "///////////////////////////////////////////////////////////////////////////////
-
 set t_Co=256
 colorscheme hybrid " カラースキーム
 "highlight CursorLine ctermbg=black guibg=gray10   " カーソル行の色
@@ -124,7 +112,6 @@ colorscheme hybrid " カラースキーム
 "///////////////////////////////////////////////////////////////////////////////
 " ステータスラインの表示
 "///////////////////////////////////////////////////////////////////////////////
-
 set statusline=%<    " 行が長すぎるときに切り詰める位置
 set statusline+=[%n] " バッファ番号
 set statusline+=%m   " %m 修正フラグ
@@ -156,7 +143,6 @@ set statusline+=%03P " ファイル内の何％の位置にあるか
 "///////////////////////////////////////////////////////////////////////////////
 " 基本設定
 "///////////////////////////////////////////////////////////////////////////////
-
 set scrolloff=10               " スクロール時の余白確保
 set textwidth=0                " 一行に長い文章を書いていても自動折り返しをしない
 set nobackup                   " バックアップ取らない
@@ -214,7 +200,6 @@ nmap rs :%s///gc<Left><Left><Left><Left>
 "///////////////////////////////////////////////////////////////////////////////
 " 見た目設定(CUI/GUI共通)
 "///////////////////////////////////////////////////////////////////////////////
-
 set number           " 行番号表示
 
 set showcmd          " コマンドをステータス行に表示
@@ -255,7 +240,6 @@ augroup END
 "///////////////////////////////////////////////////////////////////////////////
 " 基本キーマップ設定
 "///////////////////////////////////////////////////////////////////////////////
-
 let mapleader = ","            " キーマップリーダー
 
 " 行単位で移動(1行が長い場合に便利)
@@ -290,14 +274,14 @@ nnoremap ; :
 nnoremap : ;
 
 " insert中のカーソル移動＆C-hが死ぬので変わりをマップ
-"inoremap <silent> <C-h> <left>
-"inoremap <silent> <C-j> <down>
-"inoremap <silent> <C-k> <up>
-"inoremap <silent> <C-l> <right>
+inoremap <silent> <C-h> <left>
+inoremap <silent> <C-j> <down>
+inoremap <silent> <C-k> <up>
+inoremap <silent> <C-l> <right>
 inoremap <silent> <C-d> <delete>
 
-"Escの2回押しでハイライト消去
-nmap <ESC><ESC> ;nohlsearch<CR><ESC>
+"ハイライト消去
+nmap <space><ESC> ;nohlsearch<CR><ESC>
 
 " 縦に連番入力
 vnoremap <silent> co :ContinuousNumber <C-a><CR>
@@ -309,7 +293,6 @@ command! -count -nargs=1 ContinuousNumber let c = col('.')|for n in range(1, <co
 "///////////////////////////////////////////////////////////////////////////////
 " エンコーディング関連
 "///////////////////////////////////////////////////////////////////////////////
-
 " 改行文字
 set ffs=unix,dos,mac
 
@@ -355,21 +338,6 @@ let g:lightline = {
       \ }
 
 " --------------------------------------------
-" pathogen.vim
-"call pathogen#infect()
-
-" --------------------------------------------
-" ctrlp.vim
-" let g:ctrlp_extensions = ['cmdline', 'yankring', 'menu']
-
-" --------------------------------------------
-"" migemo.vim
-"if has('migemo')
-"  set migemo
-"  set migemodict=/opt/local/share/migemo/utf-8/migemo-dict " TODO パスを再検討
-"endif
-
-" --------------------------------------------
 " grep.vim
 " :Gb <args> でGrepBufferする
 command! -nargs=1 Gb :GrepBuffer <args>
@@ -386,46 +354,6 @@ nnoremap <silent> vs :VimShell<CR>
 nnoremap <silent> vsc :VimShellCreate<CR>
 nnoremap <silent> vp :VimShellPop<CR>
 
-
-"" --------------------------------------------
-"" neocomplcache.vim
-"let g:neocomplcache_enable_at_startup = 1
-"let g:NeoComplCache_SmartCase = 1
-"let g:NeoComplCache_EnableCamelCaseCompletion = 1
-"let g:NeoComplCache_EnableUnderbarCompletion = 1
-"let g:NeoComplCache_MinSyntaxLength = 3
-"let g:NeoComplCache_SkipInputTime = '0.3'
-"let g:NeoComplCache_ManualCompletionStartLength = 3
-"let g:NeoComplCache_DisableAutoComplete = 0
-"let g:NeoComplCache_EnableSkipCompletion = 1
-"let g:NeoComplCache_SkipCompletionTime = '0.2'
-"
-""inoremap <expr><C-h> pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
-""inoremap <expr><BS> pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
-""inoremap <expr><CR> pumvisible() ? "\<C-y>\<CR>X\<BS>" : "\<CR>X\<BS>"
-""noremap <silent> <C-e> :NeoComplCacheToggle<CR>
-"
-"if !exists('g:neocomplcache_force_omni_patterns')
-"  let g:neocomplcache_force_omni_patterns = {}
-"endif
-""let g:neocomplcache_force_overwrite_completefunc = 1
-"let g:neocomplcache_force_omni_patterns.c =
-"  \ '[^.[:digit:] *\t]\%(\.\|->\)'
-"let g:neocomplcache_force_omni_patterns.cpp =
-"  \ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-"let g:neocomplcache_force_omni_patterns.objc =
-"  \ '[^.[:digit:] *\t]\%(\.\|->\)'
-"let g:neocomplcache_force_omni_patterns.objcpp =
-"  \ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-""let g:clang_complete_auto = 0
-""let g:clang_auto_select = 0
-"
-"if !exists('g:neocomplcache_disabled_sources_list')
-"let g:neocomplcache_disabled_sources_list = {}
-"endif
-"let g:neocomplcache_disabled_sources_list = {'snippets_complete':0, 'include_complete':0, 'dictionary_complete':0}
-"
-"let g:neocomplcache_caching_limit_file_size = 5000000
 
 " --------------------------------------------
 " neocomplete
@@ -585,7 +513,7 @@ nnoremap <silent> [unite]m :<C-u>Unite file_mru<CR>
 nnoremap <silent> [unite]a :<C-u>UniteBookmarkAdd<CR>
 
 nnoremap <silent> [unite]s :<C-u>Unite source<CR>
-nnoremap <silent> [unite]o :<C-u>Unite outline<CR>
+"nnoremap <silent> [unite]o :<C-u>Unite outline<CR>
 nnoremap <silent> [unite]n :<C-u>Unite snippet<CR>
 
 function! s:unite_project(...)
@@ -623,17 +551,6 @@ call unite#custom_default_action('source/bookmark/directory' , 'vimfiler')
 let g:vimfiler_as_default_explorer = 1
 let g:vimfiler_safe_mode_by_default = 0
 nnoremap <silent> <Leader>fe :<C-u>VimFilerBufferDir -split -simple -winwidth=35 -no-quit<CR>
-"let g:vimfiler_sort_type = 'F'
-"call vimfiler#set_execute_file('txt', 'vim')
-
-" お決まりの開き先
-if has('win32') || has('win64')
-nnoremap <silent> <Leader>fw :VimFiler ~/My\ Documents/Dropbox/Documents/PlainText/<CR>
-nnoremap <silent> <Leader>fc :VimFiler ~/My\ Documents/codebox/<CR>
-else
-nnoremap <silent> <Leader>fw :VimFiler ~/Dropbox/Documents/PlainText/<CR>
-endif
-
 
 
 " --------------------------------------------
@@ -671,34 +588,10 @@ let g:QFixHowm_Replace_Title_Len        = 64
 let g:Modeliner_format = 'fenc= ts= sts= sw= tw= ft='
 
 " --------------------------------------------
-" qbuf.vim
-"let g:qb_hotkey="<space><space>"
-
-" --------------------------------------------
 " bclose.vim
 let bclose_multiple = 1
 
-" --------------------------------------------
-" quickrun.vim
-let g:quickrun_no_default_key_mappings=1
-nnoremap \r <C-u>:QuickRun<CR>
 
-" --------------------------------------------
-" EasyMotion
-"let g:EasyMotion_leader_key = '<Space>'
-"let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwxyz1234567890'
-"let g:EasyMotion_do_shade = 1
-
-" --------------------------------------------
-" gtags.vim
-"let g:Gtags_Auto_Map=0
-"nnoremap <C-c> <C-w><C-w><C-w>q
-"nnoremap <C-n> :cn<CR>
-"nnoremap <C-p> :cp<CR>
-"nnoremap <C-b> :Gtags -g
-"nnoremap <C-j> :Gtags <C-r><C-w><CR>
-"nnoremap <C-k> :Gtags -r <C-r><C-w><CR>
-"nnoremap <C-f> :Gtags -f %<CR>
 
 "///////////////////////////////////////////////////////////////////////////////
 " ユーティリティ

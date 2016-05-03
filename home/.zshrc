@@ -33,7 +33,7 @@ ZSH_THEME="candy"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 #plugins=(git git-flow vagrant knife rbenv gem bundler brew osx rsync)
-plugins=(git git-flow vagrant knife gem bundler brew osx rsync rails tmuxinator docker golang nvm npm)
+plugins=(git git-flow vagrant knife gem bundler brew osx rsync rails tmuxinator docker docker-compose golang npm)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -74,18 +74,21 @@ fi
 #PATH=~/.pythonz/bin:$PATH
 #export PATH
 
+# curl
+export SSL_CERT_FILE=/usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
+
 # rbenv
 eval "$(rbenv init -)"
 
 # nodejs
-export NODE_PATH=/usr/local/lib/node_modules
-export SSL_CERT_FILE=/usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
-source ~/.nvm/nvm.sh
+export PATH=$HOME/.nodebrew/current/bin:$PATH
 
 # golang
 export GOPATH=$HOME/Develop/go
-PATH=$GOPATH/bin:$PATH
-export PATH
+export PATH=$GOPATH/bin:$PATH
+
+# java
+export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 
 # direnv
 eval "$(direnv hook zsh)"

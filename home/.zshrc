@@ -71,8 +71,7 @@ alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"
 if [ -s $HOME/.pythonz/etc/bashrc ]; then
     source $HOME/.pythonz/etc/bashrc
 fi
-#PATH=~/.pythonz/bin:$PATH
-#export PATH
+export PATH=$HOME/.pythonz/bin:$PATH
 
 # curl
 export SSL_CERT_FILE=/usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
@@ -93,3 +92,4 @@ export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 # direnv
 eval "$(direnv hook zsh)"
 
+# vim: set ts=4 sw=4 sts=0 tw=0 enc=utf8

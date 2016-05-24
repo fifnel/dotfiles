@@ -13,9 +13,4 @@ export LSCOLORS=DxGxcxdxCxegedabagacad
 export LANG=ja_JP.UTF-8
 export LESSCHARSET=utf-8
 
-# node.js
-source ~/.nvm/nvm.sh
-npm_dir=${NVM_PATH}_modules
-export NODE_PATH=$npm_dir
-
 source ~/.bashrc

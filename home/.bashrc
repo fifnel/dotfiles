@@ -22,14 +22,24 @@
 alias ls='ls -lG'
 alias la='ls -a'
 
-# screen
-alias screen='~/local/bin/screen-4.1.0'
-alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
+# curl
+export SSL_CERT_FILE=/usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
 
-# path
-export PATH=/usr/local/heroku/bin:~/.pythonz/bin:$PATH
-export NODE_PATH=$NODE_PATH:/usr/local/lib/node_modules
-source ~/.nvm/nvm.sh
+# rbenv
+eval "$(rbenv init -)"
+
+# nodejs
+export PATH=$HOME/.nodebrew/current/bin:$PATH
+
+# golang
+export GOPATH=$HOME/Develop/go
+export PATH=$GOPATH/bin:$PATH
+
+# java
+export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+
+# direnv
+eval "$(direnv hook bash)"
 
 # vim: set ts=4 sw=4 sts=0 tw=0 enc=utf8
 

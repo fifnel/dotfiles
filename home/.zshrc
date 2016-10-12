@@ -61,6 +61,7 @@ export EDITOR='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim'
 alias knife='nocorrect knife'
 alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+alias tmux='tmux attach || tmux new'
 
 # oh-my-zsh plugin
 #export NOTIFY_COMMAND_COMPLETE_TIMEOUT=10

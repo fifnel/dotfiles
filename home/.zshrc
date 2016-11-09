@@ -62,6 +62,7 @@ alias knife='nocorrect knife'
 alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 alias tmux='tmux attach || tmux new'
+alias code='VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $*'
 
 # oh-my-zsh plugin
 #export NOTIFY_COMMAND_COMPLETE_TIMEOUT=10
@@ -75,7 +76,7 @@ fi
 export PATH=$HOME/.pythonz/bin:$PATH
 
 # curl
-export SSL_CERT_FILE=/usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
+# export SSL_CERT_FILE=/usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
 
 # rbenv
 eval "$(rbenv init -)"
@@ -92,5 +93,52 @@ export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 
 # direnv
 eval "$(direnv hook zsh)"
+
+# command history
+function peco_select_history() {
+  local tac
+  if which tac > /dev/null; then
+    tac="tac"
+  else
+    tac="tail -r"
+  fi
+  BUFFER=$(fc -l -n 1 | eval $tac | peco --query "$LBUFFER")
+  CURSOR=$#BUFFER
+  zle clear-screen
+}
+zle -N peco_select_history
+bindkey '^r' peco_select_history
+
+# ghq
+function peco-src () {
+  local selected_dir=$(ghq list -p | peco --query "$LBUFFER")
+  if [ -n "$selected_dir" ]; then
+    BUFFER="cd ${selected_dir}"
+    zle accept-line
+  fi
+  zle clear-screen
+}
+zle -N peco-src
+bindkey '^]' peco-src
+
+# z
+source ~/.zsh.d/z/z.sh
+function peco-z-search
+{
+    which peco z > /dev/null
+    if [ $? -ne 0 ]; then
+        echo "Please install peco and z"
+        return 1
+    fi
+    local res=$(z | sort -rn | cut -c 12- | peco)
+    if [ -n "$res" ]; then
+        BUFFER+="cd $res"
+        zle accept-line
+    else
+        return 1
+    fi
+}
+zle -N peco-z-search
+bindkey '^f' peco-z-search
 
 # vim: set ts=4 sw=4 sts=0 tw=0 enc=utf8

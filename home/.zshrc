@@ -62,7 +62,7 @@ alias knife='nocorrect knife'
 alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 alias tmux='tmux attach || tmux new'
-alias code='VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $*'
+#alias code='VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $*'
 
 # oh-my-zsh plugin
 #export NOTIFY_COMMAND_COMPLETE_TIMEOUT=10
@@ -139,6 +139,6 @@ function peco-z-search
     fi
 }
 zle -N peco-z-search
-bindkey '^f' peco-z-search
+bindkey '^z' peco-z-search
 
 # vim: set ts=4 sw=4 sts=0 tw=0 enc=utf8

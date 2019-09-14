@@ -11,4 +11,3 @@ case ${UID} in
     LANG=C
     ;;
 esac
-

@@ -25,12 +25,6 @@ alias la='ls -a'
 # curl
 export SSL_CERT_FILE=/usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
 
-# rbenv
-eval "$(rbenv init -)"
-
-# nodejs
-export PATH=$HOME/.nodebrew/current/bin:$PATH
-
 # golang
 export GOPATH=$HOME/Develop/go
 export PATH=$GOPATH/bin:$PATH

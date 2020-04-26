@@ -31,9 +31,17 @@ alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 alias tmux='tmux attach || tmux new'
 
+# homebrew
+export PATH="/usr/local/sbin:$PATH"
+alias brew='PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin brew'
+
 # anyenv
 eval "$(anyenv init -)"
 export PATH="$HOME/.anyenv/bin:$PATH"
+
+# goenv
+export PATH="$GOROOT/bin:$PATH"
+export PATH="$GOPATH/bin:$PATH"
 
 # java
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
@@ -91,5 +99,8 @@ bindkey '^z' peco-z-search
 # gcloud
 source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
 source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
+
+# パスの重複削除
+typeset -U PATH
 
 # vim: set ts=4 sw=4 sts=0 tw=0 enc=utf8

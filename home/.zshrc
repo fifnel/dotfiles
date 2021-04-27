@@ -43,6 +43,14 @@ export PATH="$HOME/.anyenv/bin:$PATH"
 export PATH="$GOROOT/bin:$PATH"
 export PATH="$GOPATH/bin:$PATH"
 
+# rust
+export PATH="$HOME/.cargo/bin:$PATH"
+
+# stack (haskell toolstack)
+autoload -U +X compinit && compinit
+autoload -U +X bashcompinit && bashcompinit
+eval "$(stack --bash-completion-script stack)"
+
 # java
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 
